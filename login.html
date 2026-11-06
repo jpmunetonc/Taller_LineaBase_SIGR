@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SIGR · Acceso del administrador" />
+  <title>SIGR · Acceso de Administrador</title>
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- =========================================================
+       PANTALLA 2 · LOGIN DEL ADMINISTRADOR
+  ========================================================== -->
+  <section id="login-view" class="view view--login">
+    <div class="login-card">
+
+      <header class="login-card__header">
+        <span class="brand-mark" aria-hidden="true">🍽️</span>
+        <h1 class="login-card__title">SIGR</h1>
+        <p class="login-card__subtitle">Sistema de Gestión de Restaurante</p>
+        <p class="login-card__hint">Acceso exclusivo para el Administrador</p>
+      </header>
+
+      <form id="login-form" class="login-form" novalidate>
+        <div class="field">
+          <label class="field__label" for="login-user">Usuario</label>
+          <input
+            class="field__input"
+            type="text"
+            id="login-user"
+            name="username"
+            placeholder="Ej: admin"
+            autocomplete="username"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="login-pass">Contraseña</label>
+          <input
+            class="field__input"
+            type="password"
+            id="login-pass"
+            name="password"
+            placeholder="••••••••"
+            autocomplete="current-password"
+            required
+          />
+        </div>
+
+        <!-- Mensaje de error (se rellena desde JavaScript) -->
+        <p id="login-error" class="form-message form-message--error" role="alert" hidden>
+          Usuario o contraseña incorrectos.
+        </p>
+
+        <button class="btn btn--primary btn--block" type="submit">Iniciar sesión</button>
+      </form>
+
+      <footer class="login-card__footer">
+        <small>Credenciales de demostración: <strong>admin</strong> / <strong>admin123</strong></small>
+        <p class="login-card__back"><a href="index.html">← Volver al menú</a></p>
+      </footer>
+    </div>
+  </section>
+
+  <script src="js/store.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>
