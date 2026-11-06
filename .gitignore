@@ -1,0 +1,33 @@
+# ---------------------------------------------------------------
+# SIGR · Archivos ignorados por Git
+# ---------------------------------------------------------------
+
+# Dependencias de Node (se regeneran con: npm install)
+node_modules/
+
+# Artefactos de compilación / empaquetado
+*.zip
+dist/
+build/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editores y sistema operativo
+.vscode/settings.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Entornos y variables locales
+.env
+.env.local
+
+# Salidas de pruebas (reportes, capturas)
+test-results/
+coverage/
+*.log
