@@ -92,6 +92,106 @@
     </footer>
   </section>
 
+  <!-- =========================================================
+       FASE 3 · BOTÓN FLOTANTE DEL PEDIDO (esquina inferior derecha)
+       Muestra permanentemente el contador de elementos agregados
+  ========================================================== -->
+  <button
+    id="cart-fab"
+    class="cart-fab"
+    type="button"
+    aria-haspopup="dialog"
+    aria-controls="cart-modal"
+    aria-expanded="false"
+    title="Ver mi pedido"
+    aria-label="Ver mi pedido"
+  >
+    <!-- Icono minimalista de carrito de compra -->
+    <svg class="cart-fab__icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+      <path d="M3.5 4.2a1 1 0 0 0 0 2h1.32l1.6 8.6A2.2 2.2 0 0 0 8.6 16.7h7.9a2.2 2.2 0 0 0 2.16-1.76l1.3-6.2H7.1"></path>
+      <circle cx="9.2" cy="19.4" r="1.5"></circle>
+      <circle cx="16.6" cy="19.4" r="1.5"></circle>
+    </svg>
+    <!-- Contador dinámico de elementos del pedido -->
+    <span id="cart-count" class="cart-fab__count" aria-live="polite">0</span>
+  </button>
+
+  <!-- =========================================================
+       FASE 3 · MODAL DE RESUMEN DEL PEDIDO
+       Lista de platos, total dinámico, confirmación y
+       pantalla de estado con barra de progreso animada (0 % → 100 %)
+  ========================================================== -->
+  <div
+    id="cart-modal"
+    class="cart-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="cart-modal-title"
+    hidden
+  >
+    <!-- Fondo superpuesto: clic para cerrar -->
+    <div id="cart-overlay" class="cart-modal__overlay" data-close-cart></div>
+
+    <div class="cart-modal__panel">
+      <header class="cart-modal__header">
+        <h2 id="cart-modal-title" class="cart-modal__title">Resumen de su pedido</h2>
+        <button
+          id="cart-close-btn"
+          class="cart-modal__close"
+          type="button"
+          aria-label="Cerrar resumen"
+          title="Cerrar"
+          data-close-cart
+        >✕</button>
+      </header>
+
+      <!-- ---------- Vista A · Lista detallada del carrito ---------- -->
+      <div id="cart-summary" class="cart-modal__body">
+        <!-- Estado vacío -->
+        <div id="cart-empty" class="cart-empty">
+          <span class="cart-empty__icon" aria-hidden="true">🛒</span>
+          <p class="cart-empty__text">Su pedido está vacío.</p>
+          <p class="cart-empty__hint">Agregue platos desde el menú.</p>
+        </div>
+
+        <!-- Lista de platos seleccionados -->
+        <ul id="cart-items" class="cart-items" aria-label="Platos seleccionados"></ul>
+
+        <!-- Total dinámico -->
+        <div id="cart-total-wrap" class="cart-total" hidden>
+          <span class="cart-total__label">Total</span>
+          <span id="cart-total" class="cart-total__value">$0.00</span>
+        </div>
+      </div>
+
+      <!-- Acción principal -->
+      <footer id="cart-actions" class="cart-modal__footer">
+        <button id="cart-confirm-btn" class="btn btn--primary btn--block" type="button" disabled>
+          Confirmar Pedido
+        </button>
+      </footer>
+
+      <!-- ---------- Vista B · Estado del pedido + barra de progreso ---------- -->
+      <div id="order-progress" class="order-progress" hidden aria-live="polite">
+        <span class="order-progress__icon" aria-hidden="true">👨‍🍳</span>
+        <p id="order-progress-msg" class="order-progress__msg">Su pedido está en proceso</p>
+
+        <!-- Barra visual: el ancho lo anima JavaScript con transición CSS -->
+        <div
+          class="progress"
+          role="progressbar"
+          aria-label="Progreso del pedido"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <div id="progress-bar" class="progress__bar"></div>
+        </div>
+        <span id="progress-percent" class="order-progress__percent">0 %</span>
+      </div>
+    </div>
+  </div>
+
   <script src="js/store.js"></script>
   <script src="js/client.js"></script>
 </body>
